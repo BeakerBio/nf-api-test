@@ -47,6 +47,8 @@ workflow.onComplete {
     def body = groovy.json.JsonOutput.toJson([
         computeEnvironment: params.computeEnvironment,
         name: "Subsequent workflow",
+        params: {},
+        profiles: [],
         workflow: [
             repo: [
                 owner: params.repoOwner,
