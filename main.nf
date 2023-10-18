@@ -63,7 +63,7 @@ workflow.onComplete {
     apiRequest.setRequestMethod("POST")
     apiRequest.setDoOutput(true)
     apiRequest.setRequestProperty("Content-Type", "application/json")
-    apiRequest.getOutputStream().write(json.getBytes("UTF-8"))
+    apiRequest.getOutputStream().write(body.getBytes("UTF-8"))
 
     def res = new groovy.json.JsonSlurper().parseText(apiRequest.getInputStream().getText())
     println("Next workflow started at: ${res.workflowRun.webUrl}")
