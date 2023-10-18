@@ -22,6 +22,10 @@
         "fa_icon": "fas fa-terminal",
         "description": "Define the workflow to run after this one.",
         "properties": {
+            "computeEnvironment": {
+                "type": "string",
+                "description": "The compute environment to run the workflow in"       
+            },
             "repoOwner": {
                 "type": "string",
                 "description": "The GitHub repo owner"

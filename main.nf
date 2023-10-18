@@ -2,16 +2,18 @@
 nextflow.enable.dsl=2 
 
 params.fail = false
+params.computeEnvironment = "main"
 params.repoOwner = "nextflow-io"
 params.repoName = "rnaseq-nf"
 params.commit = "466e03efdd4d33f5e16e0b83ebd19e8f4d1474ca"
 
 log.info """\
  ===================================
- fail        : ${params.fail}
- repoOwner   : ${params.repoOwner}
- repoName    : ${params.repoName}
- commit      : ${params.commit}
+ fail                : ${params.fail}
+ computeEnvironment  : ${params.computeEnvironment}
+ repoOwner           : ${params.repoOwner}
+ repoName            : ${params.repoName}
+ commit              : ${params.commit}
  ===================================
  """
 
@@ -43,7 +45,7 @@ workflow.onComplete {
     def beakerToken = System.getenv('BEAKER_TOKEN')
 
     def body = groovy.json.JsonOutput.toJson([
-        computeEnvironment: "main",
+        computeEnvironment: params.computeEnvironment,
         name: "Subsequent workflow",
         workflow: [
             repo: [
