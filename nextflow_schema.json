@@ -1,0 +1,48 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/BeakerBio/nf-api-test/main/nextflow_schema.json",
+    "title": "Beaker nf-api-test workflow parameters",
+    "description": "Beaker internal workflow for API testing",
+    "type": "object",
+    "definitions": {
+      "general": {
+        "title": "Input/output options",
+        "type": "object",
+        "description": "General configuration options.",
+        "properties": {
+          "fail": {
+            "type": "boolean",
+            "description": "If the workflow should fail"
+          }
+        }
+      },
+      "subsequent_workflow": {
+        "title": "Subsequent workflow options",
+        "type": "object",
+        "fa_icon": "fas fa-terminal",
+        "description": "Define the workflow to run after this one.",
+        "properties": {
+            "repoOwner": {
+                "type": "string",
+                "description": "The GitHub repo owner"
+            },
+            "repoName": {
+                "type": "string",
+                "description": "The GitHub repo name"
+            },
+            "commit": {
+                "type": "string",
+                "description": "The commit hash of the workflow to run"
+            }
+        }
+      }
+    },
+    "allOf": [
+      {
+        "$ref": "#/definitions/general"
+      },
+      {
+        "$ref": "#/definitions/subsequent_workflow"
+      }
+    ]
+  }
